@@ -4,23 +4,39 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
+
 <body>
 
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button"
-                id="Tables" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-            Таблицы
-        </button>
-        <div class="dropdown-menu" aria-labelledby="Tables">
-            <a class="dropdown-item" href="#">Наша история</a>
-            <a class="dropdown-item" href="#">Наша команда</a>
-            <a class="dropdown-item" href="#">Контакты</a>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <div class="container">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Разработка <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Unit тесты</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">База данных</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a class="dropdown-item" href="#">Таблицы</a>
+                            <a class="dropdown-item" href="#">Схема</a>
+                            <a class="dropdown-item" href="#">Запросы</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Структура проекта</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
 
     <div class="container">
+
         @RenderBody()
     </div>
 

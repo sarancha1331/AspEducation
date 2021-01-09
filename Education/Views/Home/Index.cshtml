@@ -1,8 +1,35 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<br />
+<h2>Пошаговая разработка проекта</h2>
+<p>Проект разработ с помощью фреймворка Asp.NET Core. В данном проекте представлена реализация запросов к базе данных "Education", разработанная в предыдущем проекте. <a href="https://github.com/sarancha1331/MyEducationDB">Ссылка на гит(предыдущий проект)</a>. Прошлое проектной решение было выполнено в виде несколько файлов с использованием PHP(статический класс соединения + класс с реализацией запросов).</p>
+<h4>Начальные настройки</h4>
+<ul>
+    <li>Создание проекта</li>
+    <li>Создание сущностей</li>
+    <li>Подключение необходимых NuGet пакетов</li>
+</ul>
+<center><img src="~/jpg/1.jpg" /></center>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h4>Создание базы данных(миграции)</h4>
+<ul>
+    <li>Описываем DbSet</li>
+    <li>Добавляем каждой сущности ключевое поле Id</li>
+    <li>Создаём миграцию</li>
+</ul>
+<center><img src="~/jpg/2.jpg" /></center>
+
+<h4>Подключаем MS-SQL</h4>
+<ul>
+    <li>Для работы с БД. Подключаемся к нашей БД через MS-SQL</li>
+    <li>Проверяем результат выполненной миграции</li>
+</ul>
+<center><img src="~/jpg/3.jpg" /></center>
+
+<style>
+    img {
+        width: 80%;
+    }
+
+    center {
+        margin-bottom: 20px;
+    }
+</style>
