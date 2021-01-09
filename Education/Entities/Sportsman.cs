@@ -12,11 +12,11 @@ namespace Education.Entities
     /// </summary>
     public class Sportsman : BaseEntity
     {
+        public string Status { get; set; }
+
         public int FederationId { get; set; }
 
         public int SportId { get; set; }
-
-        public string Status { get; set; }
 
         public int StudentId { get; set; }
 

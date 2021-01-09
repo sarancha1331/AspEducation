@@ -1,0 +1,30 @@
+﻿@{
+    int i = 1;
+}
+<br />
+<h4>Таблица студентов</h4>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>ФИО</th>
+            <th>Группа</th>
+            <th>Дата рождения</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in ViewBag.Result)
+        {
+        <tr>
+            <td><p>@i</p></td>
+            <td><p>@item.FIO</p></td>
+            <td><p>@item.StudentGroup</p></td>
+            <td><p>@item.DataBorn</p></td>
+        </tr>
+            i++;
+        }
+    </tbody>
+</table>

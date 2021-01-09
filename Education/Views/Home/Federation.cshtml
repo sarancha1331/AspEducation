@@ -2,15 +2,15 @@
     int i = 1;
 }
 <br />
-<h4>Таблица автопарков</h4>
+<h4>Таблица федераций</h4>
 
 
 <table class="table">
     <thead>
         <tr>
             <th>№</th>
-            <th>Адрес</th>
-            <th>Размер парковки</th>
+            <th>Название федерации</th>
+            <th>Дата основания</th>
         </tr>
     </thead>
     <tbody>
@@ -18,8 +18,8 @@
         @foreach (var item in ViewBag.Result){
         <tr>
             <td><p>@i</p></td>
-            <td><p>@item.Address</p></td>
-            <td><p>@item.ParkSize</p></td>
+            <td><p>@item.FederationName</p></td>
+            <td><p>@item.DataBasis</p></td>
         </tr>
         i++;
         }
