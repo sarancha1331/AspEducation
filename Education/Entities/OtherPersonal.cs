@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace Education.Entities
 {
-    public class OtherPersonal
+    /// <summary>
+    /// Остальное персонал
+    /// </summary>
+    public class OtherPersonal : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         public string FIO { get; set; }
 
-        public int PositionId { get; set; }
+        public int? PositionId { get; set; }
 
-        public int EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
 
-        public int ExperienceId { get; set; }
+        public int? ExperienceId { get; set; }
 
 
         [ForeignKey("PositionId")]
-        public Position Position { get; set; }
+        public virtual Position Position { get; set; }
 
         [ForeignKey("EmployeeId")]
-        public Employee Employee { get; set; }
+        public virtual Employee Employee { get; set; }
 
         [ForeignKey("ExperienceId")]
-        public Experience Experience { get; set; }
+        public virtual Experience Experience { get; set; }
     }
 }

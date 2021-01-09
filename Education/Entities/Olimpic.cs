@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Education.Entities
 {
-    public class Olimpic
+    /// <summary>
+    /// Олимпиады
+    /// </summary>
+    public class Olimpic : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         public DateTime OlimpicData { get; set; }
 
         public string NameOlimpic { get; set; }

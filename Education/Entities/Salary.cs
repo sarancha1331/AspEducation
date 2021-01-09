@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Education.Entities
 {
-    public class Salary
+    /// <summary>
+    /// Зарплата
+    /// </summary>
+    public class Salary : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         public int SalaryNumber { get; set; }
     }
 }

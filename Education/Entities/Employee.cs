@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Education.Entities
 {
-    public class Employee
+    /// <summary>
+    /// Сотрудник
+    /// </summary>
+    public class Employee : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         public DateTime DateOfEmployee { get; set;}
 
         public string Specialization { get; set; }

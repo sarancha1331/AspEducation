@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Education.Entities
 {
-    public class Avto
+    /// <summary>
+    /// Авто
+    /// </summary>
+    public class Avto : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         public string Marka { get; set; }
 
         public string Colour { get; set; }

@@ -7,16 +7,12 @@ using System.Threading.Tasks;
 
 namespace Education.Entities
 {
-    public class Experience
+    /// <summary>
+    /// Стаж
+    /// </summary>
+    public class Experience : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
+        public string ExperienceYear { get; set; }
 
-        public int ExperienceYear { get; set; }
-
-        public int SalaryId { get; set; }
-
-        [ForeignKey("SalaryId")]
-        public Salary Salary { get; set; }
     }
 }

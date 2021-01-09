@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Education.Entities
 {
-    /// <summary>
-    /// Спорт
-    /// </summary>
-    public class Sport : BaseEntity
-    { 
-        public string NameSport { get; set; }
+    public class BaseEntity
+    {
+        [Key]
+        public int Id { get; set; }
     }
 }

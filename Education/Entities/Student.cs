@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Education.Entities
 {
-    public class Student
+    /// <summary>
+    /// Студенты
+    /// </summary>
+    public class Student : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         public string FIO { get; set; }
 
         public string StudentGroup { get; set; }

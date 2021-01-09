@@ -1,4 +1,7 @@
 using Education.App_Data;
+using Education.Interfaces;
+using Education.Repository;
+using Education.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +33,11 @@ namespace Education
             services.AddDbContext<DbEducationContext>(options =>
                 options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));       //Строка соединения находится в .json
+
+            services.AddTransient<IMainService, MainService>();
+            services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

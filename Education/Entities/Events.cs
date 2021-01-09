@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Education.Entities
 {
-    public class Events
+    /// <summary>
+    /// Событие
+    /// </summary>
+    public class Events : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         public string NameEvent { get; set; }
 
         public DateTime DataEvent { get; set; }

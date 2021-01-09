@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Education.Entities
 {
-    public class School
+    /// <summary>
+    /// Школа
+    /// </summary>
+    public class School : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         public string Name { get; set; }
+
+        public string Address { get; set; }
     }
 }

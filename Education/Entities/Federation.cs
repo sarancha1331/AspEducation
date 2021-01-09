@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Education.Entities
 {
-    public class Federation
+    /// <summary>
+    /// Федерация
+    /// </summary>
+    public class Federation : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-
         public string FederationName { get; set; }
 
         public DateTime DataBasis { get; set; }
