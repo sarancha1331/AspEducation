@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button"
+                id="Tables" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Таблицы
+        </button>
+        <div class="dropdown-menu" aria-labelledby="Tables">
+            <a class="dropdown-item" href="#">Наша история</a>
+            <a class="dropdown-item" href="#">Наша команда</a>
+            <a class="dropdown-item" href="#">Контакты</a>
+        </div>
+    </div>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
