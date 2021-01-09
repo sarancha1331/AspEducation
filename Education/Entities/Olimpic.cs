@@ -10,5 +10,11 @@ namespace Education.Entities
     {
         [Key]
         public int Id { get; set; }
+
+        public DateTime OlimpicData { get; set; }
+
+        public string NameOlimpic { get; set; }
+
+        public string Subject { get; set; }
     }
 }

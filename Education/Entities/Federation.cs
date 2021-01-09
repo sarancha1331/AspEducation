@@ -10,5 +10,9 @@ namespace Education.Entities
     {
         [Key]
         public int Id { get; set; }
+
+        public string FederationName { get; set; }
+
+        public DateTime DataBasis { get; set; }
     }
 }

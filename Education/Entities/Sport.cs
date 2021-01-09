@@ -10,5 +10,7 @@ namespace Education.Entities
     {
         [Key]
         public int Id { get; set; }
+
+        public string NameSport { get; set; }
     }
 }
