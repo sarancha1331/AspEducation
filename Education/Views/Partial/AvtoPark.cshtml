@@ -2,15 +2,15 @@
     int i = 1;
 }
 <br />
-<h4>Таблица школ</h4>
+<h4>Таблица автопарков</h4>
 
-
+<p><span style="font-weight: bold;color: green">Help! </span>Вывод данных таблицы без связных с ней элементов(FK)</p>
 <table class="table">
     <thead>
         <tr>
             <th>№</th>
-            <th>Название школы</th>
             <th>Адрес</th>
+            <th>Размер парковки</th>
         </tr>
     </thead>
     <tbody>
@@ -18,8 +18,8 @@
         @foreach (var item in ViewBag.Result){
         <tr>
             <td><p>@i</p></td>
-            <td><p>@item.Name</p></td>
             <td><p>@item.Address</p></td>
+            <td><p>@item.ParkSize</p></td>
         </tr>
         i++;
         }

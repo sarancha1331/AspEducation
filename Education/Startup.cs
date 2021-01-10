@@ -34,7 +34,9 @@ namespace Education
                 options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));       //Строка соединения находится в .json
 
-            services.AddTransient<IMainService, MainService>();
+            services.AddTransient<IExternalService, ExternalService>();
+            services.AddTransient<IStudentService, StudentService>();
+            services.AddTransient<IPersonalService, PersonalService>();
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             
 
