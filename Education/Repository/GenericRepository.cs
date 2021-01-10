@@ -17,7 +17,7 @@ namespace Education.Repository     //ИЗМЕНИТЬ КОМЕНТЫ
         /// <summary>
         /// Контекст данных для работы с БД
         /// </summary>
-        private readonly DbEducationContext context;
+        protected readonly DbEducationContext context;
 
         /// <summary>
         /// Инициализация контекста 
@@ -27,11 +27,41 @@ namespace Education.Repository     //ИЗМЕНИТЬ КОМЕНТЫ
             context = dbNotebookContext;
         }
 
-        public async Task<List<T>> GetAllAsync()
+        public virtual async Task<List<T>> GetAllAsync()
         {
             return await context.Set<T>().ToListAsync();
         }
 
+        public virtual async Task<T> GetByIdAsync(int? id)
+        {
+            return await context.Set<T>().FindAsync(id);
+        }
+
+        public virtual async Task DeleteAsync(int? id)
+        {
+            T entity = await GetByIdAsync(id);
+            if (entity != null)
+            {
+                context.Set<T>().Remove(entity);
+                await context.SaveChangesAsync();
+            }
+        }
+
+        public virtual async Task AddAsync(T entity)
+        {
+            await context.AddAsync(entity);
+            await context.SaveChangesAsync();
+        }
+
+        public virtual async Task SaveChangesAsync()
+        {
+            await context.SaveChangesAsync();
+        }
+
+        public IQueryable<T> AsQueryable()
+        {
+            return context.Set<T>().AsQueryable();
+        }
 
     }
 

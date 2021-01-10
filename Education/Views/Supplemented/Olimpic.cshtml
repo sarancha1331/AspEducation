@@ -1,0 +1,30 @@
+﻿@{
+    int i = 1;
+}
+<br />
+<h4>Таблица олимпиад</h4>
+<p><span style="font-weight: bold;color: green">Help! </span>Вывод данных таблицы со значениями таблиц на которые они ссылаются</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Название олимпиады</th>
+            <th>Дата олимпиады</th>
+            <th>Предмет</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in ViewBag.Result)
+        {
+            <tr>
+                <td><p>@i</p></td>
+                <td><p>@item.NameOlimpic</p></td>
+                <td><p>@item.OlimpicData</p></td>
+                <td><p>@item.Subject</p></td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>

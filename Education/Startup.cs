@@ -37,6 +37,7 @@ namespace Education
             services.AddTransient<IExternalService, ExternalService>();
             services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<IPersonalService, PersonalService>();
+
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             
 

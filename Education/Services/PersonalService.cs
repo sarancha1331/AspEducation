@@ -1,6 +1,7 @@
 ﻿using Education.Entities;
 using Education.Interfaces;
 using Education.Services.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,14 +37,34 @@ namespace Education.Services
 
         public async Task<List<EmployeeGetAllRecords>> GetAllEmployeeAsync()
         {
-            List<Employee> avtoPark = await employeeRepository.GetAllAsync();
+            List<Employee> employee= await employeeRepository.GetAllAsync();
             List<EmployeeGetAllRecords> resultModel = new List<EmployeeGetAllRecords>();
-            foreach (var item in avtoPark)
+            foreach (var item in employee)
             {
                 resultModel.Add(new EmployeeGetAllRecords
                 {
                     DateOfEmployee = item.DateOfEmployee,
                     Specialization = item.Specialization
+                });
+            }
+
+            return resultModel;
+        }
+
+        public async Task<List<EmployeeSupplementedGetAllRecords>> GetAllEmployeeSupplementedAsync()
+        {
+            List<Employee> employee = await employeeRepository.AsQueryable()
+                .Include(q => q.School)
+                .ToListAsync();
+            List<EmployeeSupplementedGetAllRecords> resultModel = new List<EmployeeSupplementedGetAllRecords>();
+            foreach (var item in employee)
+            {
+                resultModel.Add(new EmployeeSupplementedGetAllRecords
+                {
+                    DateOfEmployee = item.DateOfEmployee,
+                    Specialization = item.Specialization,
+                    Name = item.School.Name,
+                    Address = item.School.Address
                 });
             }
 
@@ -79,6 +100,29 @@ namespace Education.Services
             return resultModel;
         }
 
+        public async Task<List<OtherPersonalSupplementedGetAllRecords>> GetAllOtherPersonalSupplementedAsync()
+        {
+            List<OtherPersonal> otherPersonal = await otherPersonalRepository.AsQueryable()
+                .Include(q => q.Employee)
+                .Include(q => q.Experience)
+                .Include(q => q.Position)
+                .ToListAsync();
+            List<OtherPersonalSupplementedGetAllRecords> resultModel = new List<OtherPersonalSupplementedGetAllRecords>();
+            foreach (var item in otherPersonal)
+            {
+                resultModel.Add(new OtherPersonalSupplementedGetAllRecords
+                {
+                    FIO = item.FIO,
+                    DateOfEmployee = item.Employee.DateOfEmployee,
+                    Specialization = item.Employee.Specialization,
+                    ExperienceYear = item.Experience.ExperienceYear,
+                    PositionName = item.Position.PositionName
+                });
+            }
+
+            return resultModel;
+        }
+
         public async Task<List<PositionGetAllRecords>> GetAllPositionAsync()
         {
             List<Position> position = await positionRepository.GetAllAsync();
@@ -93,6 +137,25 @@ namespace Education.Services
 
             return resultModel;
         }
+
+        public async Task<List<PositionSupplementedGetAllRecords>> GetAllPositionSupplementedAsync()
+        {
+            List<Position> position = await positionRepository.AsQueryable()
+                .Include(q => q.Salary)
+                .ToListAsync();
+            List<PositionSupplementedGetAllRecords> resultModel = new List<PositionSupplementedGetAllRecords>();
+            foreach (var item in position)
+            {
+                resultModel.Add(new PositionSupplementedGetAllRecords
+                {
+                    PositionName = item.PositionName,
+                    SalaryNumber = item.Salary.SalaryNumber
+                });
+            }
+
+            return resultModel;
+        }
+
 
         public async Task<List<SalaryGetAllRecords>> GetAllSalaryAsync()
         {
@@ -118,6 +181,29 @@ namespace Education.Services
                 resultModel.Add(new TeacherGetAllRecords
                 {
                     FIO = item.FIO
+                });
+            }
+
+            return resultModel;
+        }
+
+        public async Task<List<TeacherSupplementedGetAllRecords>> GetAllTeacherSupplementedAsync()
+        {
+            List<Teacher> teacher = await teacherRepository.AsQueryable()
+                .Include(q => q.Employee)
+                .Include(q => q.Experience)
+                .Include(q => q.Position)
+                .ToListAsync();
+            List<TeacherSupplementedGetAllRecords> resultModel = new List<TeacherSupplementedGetAllRecords>();
+            foreach (var item in teacher)
+            {
+                resultModel.Add(new TeacherSupplementedGetAllRecords
+                {
+                    FIO = item.FIO,
+                    DateOfEmployee = item.Employee.DateOfEmployee,
+                    Specialization = item.Employee.Specialization,
+                    ExperienceYear = item.Experience.ExperienceYear,
+                    PositionName = item.Position.PositionName
                 });
             }
 

@@ -1,6 +1,7 @@
 ﻿using Education.Entities;
 using Education.Interfaces;
 using Education.Services.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +16,13 @@ namespace Education.Services
         private readonly IGenericRepository<Federation> federationRepository;
         private readonly IGenericRepository<Sportsman> sportsmanRepository;
         private readonly IGenericRepository<Student> studentRepository;
-        private readonly IGenericRepository<OlimpicAndStudent> olimpicAndStudentRepository;
 
         public StudentService(
             IGenericRepository<Federation> federationRepository,
             IGenericRepository<Olimpic> olimpicRepository,
             IGenericRepository<Sport> sportRepository,
             IGenericRepository<Student> studentRepository,
-            IGenericRepository<Sportsman> sportsmanRepository,
-            IGenericRepository<OlimpicAndStudent> olimpicAndStudentRepository
+            IGenericRepository<Sportsman> sportsmanRepository
             )
         {
             this.federationRepository = federationRepository;
@@ -31,10 +30,9 @@ namespace Education.Services
             this.sportRepository = sportRepository;
             this.sportsmanRepository = sportsmanRepository;
             this.studentRepository = studentRepository;
-            this.olimpicAndStudentRepository = olimpicAndStudentRepository;
         }
 
-        public async Task<List<FederationGetAllRecords>> GetAllFederationAsync()
+        public async Task<List<FederationGetAllRecords>> GetAllFederationAsync()    //+
         {
             List<Federation> federation = await federationRepository.GetAllAsync();
             List<FederationGetAllRecords> resultModel = new List<FederationGetAllRecords>();
@@ -50,7 +48,7 @@ namespace Education.Services
             return resultModel;
         }
 
-        public async Task<List<OlimpicGetAllRecords>> GetAllOlimpicAsync()
+        public async Task<List<OlimpicGetAllRecords>> GetAllOlimpicAsync()  //+
         {
             List<Olimpic> federation = await olimpicRepository.GetAllAsync();
             List<OlimpicGetAllRecords> resultModel = new List<OlimpicGetAllRecords>();
@@ -67,7 +65,7 @@ namespace Education.Services
             return resultModel;
         }
 
-        public async Task<List<SportGetAllRecords>> GetAllSportAsync()
+        public async Task<List<SportGetAllRecords>> GetAllSportAsync()  //+
         {
             List<Sport> sport= await sportRepository.GetAllAsync();
             List<SportGetAllRecords> resultModel = new List<SportGetAllRecords>();
@@ -97,6 +95,28 @@ namespace Education.Services
             return resultModel;
         }
 
+        public async Task<List<SportsmanSupplementedGetAllRecords>> GetAllSportsmanSupplementedAsync() {    //+
+            List<Sportsman> sportsman = await sportsmanRepository.AsQueryable()
+                .Include(l => l.Federation)
+                .Include(q => q.Sport)
+                .Include(q => q.Student)
+                .ToListAsync();
+            List<SportsmanSupplementedGetAllRecords> resultModel = new List<SportsmanSupplementedGetAllRecords>();
+            foreach (var item in sportsman)
+            {
+                resultModel.Add(new SportsmanSupplementedGetAllRecords
+                {
+                    FIO = item.Student.FIO,
+                    Status = item.Status,
+                    FederationName = item.Federation.FederationName,
+                    DataBasis = item.Federation.DataBasis,
+                    NameSport = item.Sport.NameSport
+                });
+            }
+
+            return resultModel;
+        }
+
         public async Task<List<StudentGetAllRecords>> GetAllStudentAsync()
         {
             List<Student> student = await studentRepository.GetAllAsync();
@@ -114,6 +134,25 @@ namespace Education.Services
             return resultModel;
         }
 
+        public async Task<List<StudentSupplementedGetAllRecords>> GetAllStudentSupplementedAsync() {
+            List<Student> student = await studentRepository.AsQueryable()
+                .Include(l => l.Employee)
+                .ToListAsync();
+            List<StudentSupplementedGetAllRecords> resultModel = new List<StudentSupplementedGetAllRecords>();
+            foreach (var item in student)
+            {
+                resultModel.Add(new StudentSupplementedGetAllRecords
+                {
+                    FIO = item.FIO,
+                    StudentGroup = item.StudentGroup,
+                    DataBorn = item.DataBorn,
+                    DateOfEmployee = item.Employee.DateOfEmployee,
+                    Specialization = item.Employee.Specialization
+                });
+            }
+
+            return resultModel;
+        }
 
     }
 }

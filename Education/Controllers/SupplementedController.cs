@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace Education.Controllers
 {
-    public class PartialController : Controller
+    public class SupplementedController : Controller
     {
         private readonly IExternalService externalService;
         private readonly IStudentService studentService;
         private readonly IPersonalService personalService;
-        public PartialController(IExternalService externalService, IStudentService studentService, IPersonalService personalService)
+        public SupplementedController(IExternalService externalService, IStudentService studentService, IPersonalService personalService)
         {
             this.externalService = externalService;
             this.studentService = studentService;
@@ -23,25 +23,25 @@ namespace Education.Controllers
 
         public async Task<IActionResult> Avto()
         {
-            ViewBag.Result = await externalService.GetAllAvtoAsync();
+            ViewBag.Result = await externalService.GetAllAvtoSupplementedAsync();
             return View();
         }
 
         public async Task<IActionResult> AvtoPark()
         {
-            ViewBag.Result = await externalService.GetAllAvtoParkAsync();
+            ViewBag.Result = await externalService.GetAllAvtoParkSupplementedAsync();
             return View();
         }
 
         public async Task<IActionResult> Employee()
         {
-            ViewBag.Result = await personalService.GetAllEmployeeAsync();
+            ViewBag.Result = await personalService.GetAllEmployeeSupplementedAsync();
             return View();
         }
 
         public async Task<IActionResult> Event()
         {
-            ViewBag.Result = await externalService.GetAllEventsAsync();
+            ViewBag.Result = await externalService.GetAllEventsSupplementedAsync();
             return View();
         }
 
@@ -65,13 +65,13 @@ namespace Education.Controllers
 
         public async Task<IActionResult> OtherPersonal()
         {
-            ViewBag.Result = await personalService.GetAllOtherPersonalAsync();
+            ViewBag.Result = await personalService.GetAllOtherPersonalSupplementedAsync();
             return View();
         }
 
         public async Task<IActionResult> Position()
         {
-            ViewBag.Result = await personalService.GetAllPositionAsync();
+            ViewBag.Result = await personalService.GetAllPositionSupplementedAsync();
             return View();
         }
 
@@ -95,19 +95,19 @@ namespace Education.Controllers
 
         public async Task<IActionResult> Sportsman()
         {
-            ViewBag.Result = await studentService.GetAllSportsmanAsync();
+            ViewBag.Result = await studentService.GetAllSportsmanSupplementedAsync();
             return View();
         }
 
         public async Task<IActionResult> Student()
         {
-            ViewBag.Result = await studentService.GetAllStudentAsync();
+            ViewBag.Result = await studentService.GetAllStudentSupplementedAsync();
             return View();
         }
 
         public async Task<IActionResult> Teacher()
         {
-            ViewBag.Result = await personalService.GetAllTeacherAsync();
+            ViewBag.Result = await personalService.GetAllTeacherSupplementedAsync();
             return View();
         }
 
